@@ -205,8 +205,23 @@ var App = /** @class */ (function () {
                     console.log('forumPosts creation failed');
                 }
             });
-            res.send('{"id":"' + id + '"}');
+            var response = { id: id };
+            res.send(response);
+            // res.send('{"id":"' + id + '"}');
         });
+        // router.post('/forumpostsTest/:id', (req, res) => {
+        //   // GUIDs (Globally Unique Identifiers)
+        //   const id = req.params.id;
+        //   console.log(req.body);
+        //     var postJsonObj  = req.body;
+        //     postJsonObj.id = id;
+        //     this.ForumPosts.model.create([postJsonObj], (err) => {
+        //       if (err) {
+        //           console.log('forumPosts creation failed');
+        //       }
+        //   });
+        //     res.send('{"id":"' + id + '"}');
+        // });
         router.get('/forumpost/:id', function (req, res) {
             var forumpostId = req.params.id;
             console.log('Query single forumpost with id: ' + forumpostId);
@@ -216,7 +231,7 @@ var App = /** @class */ (function () {
             console.log('Query All ForumPosts');
             _this.ForumPosts.retrieveAllForumPosts(res);
         });
-        router.delete('forumposts/:id', function (req, res) {
+        router.delete('forumpost/:id', function (req, res) {
             console.log('Delete forumpost with id: ' + req.params.id);
             _this.ForumPosts.deleteForumPost(res, { id: req.params.id });
         });

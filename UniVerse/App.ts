@@ -211,7 +211,8 @@ class App {
               console.log('forumPosts creation failed');
           }
       });
-        res.send('{"id":"' + id + '"}');
+        const response = { id: id };
+        res.send(response);
     });
 
     // router.post('/forumpostsTest/:id', (req, res) => {
